@@ -3,7 +3,9 @@ This project’s purpose is to allow associates to develop features in a self-gu
 environment. Completion of this project will finalize a working ERS application
 before the foundations project presentation. The main goal is to build the
 application into a working API that satisfies all the core functionality required.
-Core MVP Features:
++====================+
+| Core MVP Features: |
++====================+
 1. Login/Register Feature
 The login/register feature is meant to give you preliminary experience handling
 authentication within an application. These features allow you to ensure you can track
@@ -55,3 +57,29 @@ along with tickets that have been processed by managers. Here is the user story:
 submissions.
 i. Employees should be able to filter by status (pending, approved, or denied)
 • Previous tickets should also show the details of submission.
++====================================+
+| Checklist for Feature Development: |
++====================================+
+Developing features of an application can be a complex process; however, each
+implementation should follow a generalized process:
+• Understand what this feature is meant to do
+• Outline a plan to implement this feature's functionality
+• Start writing code
+• Complete the development of this feature
+• Validate the required functionality works
+• Commit and push the code to a GitHub repository
+Completion Checklist:
+The checklist below is the project evaluation standard.
+This list will be utilized during the project presentation to demonstrate that the
+application meets all the functionality requirements.
+Using Postman or Swagger, make sure the application can complete the following
+tasks:
+1. Can use a username and password to log in
+2. Can register a new account with username and password
+3. Will notify the user if the username is unavailable
+4. Can submit new reimbursement tickets
+5. Will make sure the reimbursement ticket author provides a description and
+amount during submission
+6. Pending tickets are in a queue/list that can only be seen by Managers
+7. Tickets can be processed (approved or denied) by Managers
+8. Employees can see a list of their previous submissions
