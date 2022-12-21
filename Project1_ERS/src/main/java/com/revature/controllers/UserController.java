@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.google.gson.Gson;
 import com.revature.daos.UserDAO;
+import com.revature.models.LoginDTO;
 import com.revature.models.User;
 import io.javalin.http.Handler;
 
@@ -19,15 +20,20 @@ public class UserController {
 
     //make sure it is java.io http
     public Handler getUsersHandler = (ctx) -> {
-        String body = ctx.body();
-        //gson
-        Gson gson = new Gson();
 
-        User JsonBody = gson.fromJson(body, User.class);
+//        if(AuthController.ses != null){
+//            System.out.println(AuthController.ses.getAttribute("username"));
+//            System.out.println(AuthController.ses.getAttribute("password"));
+//        }
+        //gson
+//        Gson gson = new Gson();
+//        LoginDTO lDTO = gson.fromJson(body, LoginDTO.class);
+//        User user =
+//        String body = ctx.body();
+//
+//
+//        User JsonBody = gson.fromJson(body, User.class);
         //make it match
     };
 
-    /*Handle POST requests
-    I don't think I need a post request
-     */
 }

@@ -33,8 +33,11 @@ public class UserDAO implements UserDAOInterface{
                 // retrieve user id
                 int user_Fk = rs.getInt("user_role_fk"); // retrieve id?
 
+                //RoleDao???
 //                RoleDAO rDAO = new RoleDAO();
 //                Role r = rDAO.getRoleById(user_Fk);
+//                u.setRole(r);
+//                userList.add(u);
 
             }
             return userList;
