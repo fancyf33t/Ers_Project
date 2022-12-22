@@ -25,19 +25,19 @@ public class UserDAO implements UserDAOInterface{
             //rs.next() while loop
             while (rs.next()) {
                 User u = new User(
+                        rs.getInt("ers_user_id"),
                         rs.getString("ers_username"),
                         rs.getString("ers_password"),
-                        rs.getString("first_name"),
-                        rs.getString("last_name")
+                        rs.getInt("user_role_fk")
                 );
                 // retrieve user id
-                int user_Fk = rs.getInt("user_role_fk"); // retrieve id?
+//                int user_Fk = rs.getInt("user_role_fk"); // retrieve id?
 
-                //RoleDao???
+//                //RoleDao???
 //                RoleDAO rDAO = new RoleDAO();
 //                Role r = rDAO.getRoleById(user_Fk);
 //                u.setRole(r);
-//                userList.add(u);
+                userList.add(u);
 
             }
             return userList;

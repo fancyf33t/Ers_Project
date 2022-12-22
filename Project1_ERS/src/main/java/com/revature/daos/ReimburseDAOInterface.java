@@ -1,9 +1,14 @@
 package com.revature.daos;
 
+import com.revature.models.Reimburse;
+
+import java.util.ArrayList;
+
 public interface ReimburseDAOInterface {
     // lay out functionalities
-    ArrayList<Reimburse> getReimbursements();
+    ArrayList<Reimburse> getReimbursement();
 
-    Reimburse insertReimbursements(Reimburse rb);
-    Reimburse deleteReimbursement(Reimburse rb);
+    Reimburse insertReimbursement(Reimburse rb);
+
+    Reimburse updateReimbursement(Reimburse rb);
 }

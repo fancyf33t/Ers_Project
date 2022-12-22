@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.google.gson.Gson;
 import com.revature.daos.UserDAO;
+import com.revature.models.Employee;
 import com.revature.models.LoginDTO;
 import com.revature.models.User;
 import io.javalin.http.Handler;
@@ -25,15 +26,29 @@ public class UserController {
 //            System.out.println(AuthController.ses.getAttribute("username"));
 //            System.out.println(AuthController.ses.getAttribute("password"));
 //        }
-        //gson
-//        Gson gson = new Gson();
-//        LoginDTO lDTO = gson.fromJson(body, LoginDTO.class);
-//        User user =
-//        String body = ctx.body();
-//
-//
-//        User JsonBody = gson.fromJson(body, User.class);
-        //make it match
-    };
+        UserDAO uDAO = new UserDAO();
+        ArrayList<User> employees = uDAO.getUsers();
+        //PROBLEM: can't send plain Java in HTTP Response. Must use JSON
 
-}
+        //instantiate a GSON object so that we can make Java <-> JSON conversions
+        Gson gson = new Gson();
+
+        //use the GSON .toJson() method to turn our Java into a JSON String (JSON is always in String format)
+        String JSONEmployees = gson.toJson(employees);
+
+        //we use ctx.result() to send back an HTTP Response
+        ctx.result(JSONEmployees); //this will send back al employee data
+
+
+        //we can set status code with ctx.status()
+        ctx.status(202); //202 stands for accepted. 200 is default which is also good
+        //how to close session...
+
+//    } else {
+//        ctx.result("YOU MUST LOG IN TO DO THIS");
+//        ctx.status(401); //401 "unauthorized"
+//    }
+
+}; //make sure to add a semicolon to the end of the curly brace on the lambda
+
+    };

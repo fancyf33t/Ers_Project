@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 public class AuthController {
     AuthDAO aDAO = new AuthDAO();
 
+    //PLEASE SAVE THIS FOR LAST
+
     //empty HttpSession object that will be filed upon successful login
     public static HttpSession ses;
     /*To prevent functionalities from running until login, have them check
