@@ -2,27 +2,42 @@ package com.revature.models;
 
 public class LoginDTO {
 
-    private String username;
-    private String password;
+    private String ers_username;
+    private String ers_password;
+    private int user_role_fk;
 
-    public LoginDTO(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public LoginDTO() {
     }
 
-    public String getUsername() {
-        return username;
+    public LoginDTO(String ers_username, String ers_password, int user_role_fk) {
+        this.ers_username = ers_username;
+        this.ers_password = ers_password;
+        this.user_role_fk = user_role_fk;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    //getter/setter
+
+    public String getErs_username() {
+        return ers_username;
     }
 
-    public String getPassword() {
-        return password;
+    public void setErs_username(String ers_username) {
+        this.ers_username = ers_username;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getErs_password() {
+        return ers_password;
+    }
+
+    public void setErs_password(String ers_password) {
+        this.ers_password = ers_password;
+    }
+
+    public int getUser_role_fk() {
+        return user_role_fk;
+    }
+
+    public void setUser_role_fk(int user_role_fk) {
+        this.user_role_fk = user_role_fk;
     }
 }

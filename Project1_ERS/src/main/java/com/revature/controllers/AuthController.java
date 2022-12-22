@@ -2,7 +2,6 @@ package com.revature.controllers;
 
 import com.google.gson.Gson;
 import com.revature.daos.AuthDAO;
-import com.revature.models.Employee;
 import com.revature.models.LoginDTO;
 import com.revature.models.User;
 import io.javalin.http.Handler;
@@ -24,17 +23,22 @@ public class AuthController {
     //login will be a POST request, since the user is expected to send some data in the HTTP Request
     public Handler loginHandler=(ctx)->{
 
+        System.out.println("hi 1");
         //ctx.body() to grab HTTP Request data
         String body = ctx.body();
 
+        System.out.println("hi 2");
         //GSON for the JSON -> Java conversion
         Gson gson = new Gson();
+        System.out.println("hi 3");
 
         //take the incoming data, instantiate a LoginDTO class
         LoginDTO lDTO = gson.fromJson(body, LoginDTO.class); //.class = "turn this into a LoginDTO object"
 
+        System.out.println("hi 4");
         //if login is successful, this Employee object will be populated. Otherwise, null
-        User loggedInUser = aDAO.login(lDTO.getUsername(), lDTO.getPassword());
+        User loggedInUser = aDAO.login(lDTO.getErs_username(), lDTO.getErs_password(), lDTO.getUser_role_fk());
+        System.out.println("hi 5");
 
         if (loggedInUser != null) {
 
@@ -43,6 +47,9 @@ public class AuthController {
 
             //setAttribute() to set certain values to certain keys
             // this is how you save data in a session
+            ses.setAttribute("ers_username", loggedInUser.getErs_username());
+            ses.setAttribute("ers_password", loggedInUser.getErs_password());
+            ses.setAttribute("user_role_fk", loggedInUser.getUser_role_fk());
 //            ses.setAttribute("role_id", loggedInUser.getRole().getRole_id());
 //            ses.setAttribute("employee_id", loggedInUser.getEmployee_id());
 

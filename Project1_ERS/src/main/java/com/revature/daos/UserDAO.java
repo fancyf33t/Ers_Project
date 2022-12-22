@@ -4,7 +4,7 @@ import com.revature.models.Role;
 import com.revature.models.User;
 import com.revature.utils.ConnectionUtil;
 
-//import java.sql.*;
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,6 +51,21 @@ public class UserDAO implements UserDAOInterface{
 
     @Override
     public User insertUser(User us) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            String sql = "insert into ers_users (ers_username, ers_password, user_role_fk) values(?,?,?);";
+            //instantiate a prepared statement to hold our SQL and fill its variables
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, us.getErs_username());
+            ps.setString(2, us.getErs_password());
+            ps.setInt(3, us.getUser_role_fk());
+
+            //execute
+            ps.executeUpdate();
+
+            return us;
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 

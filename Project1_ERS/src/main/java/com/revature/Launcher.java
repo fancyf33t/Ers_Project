@@ -1,5 +1,6 @@
 package com.revature;
 
+import com.revature.controllers.AuthController;
 import com.revature.controllers.ReimburseController;
 import com.revature.controllers.RoleController;
 import com.revature.controllers.UserController;
@@ -40,12 +41,17 @@ public class Launcher {
         UserController uc = new UserController();
         ReimburseController rbc = new ReimburseController();
         RoleController rc = new RoleController();
+        AuthController ac = new AuthController();
 
         //app.get() Javalin method to take GET Requests
         app.get("/ers_users", uc.getUsersHandler);
+        app.post("/ers_users",uc.insertUsersHandler);
 
         //app.get() Javalin method for GET Request
         app.get("/ers_reimbursement", rbc.getReimburseHandler); //this works
         app.post("/ers_reimbursement", rbc.insertReimbursementHandler); // this doesn't work
+
+        //this is the endpoint handler for login
+        app.post("/login", ac.loginHandler);
     }
 }
