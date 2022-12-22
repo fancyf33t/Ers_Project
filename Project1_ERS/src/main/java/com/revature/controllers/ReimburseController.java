@@ -36,15 +36,24 @@ public class ReimburseController {
 
         //works sort of
         String JSONTickets = gson.toJson(newTicket);
-        ctx.result(JSONTickets); // send back all ticket data
-        ctx.status(202);
+//        ctx.result(JSONTickets); // send back all ticket data
+//        ctx.status(202);
 
         //does not work
-//        if(rDAO.insertReimbursement(newTicket) != null){
-//            ctx.status(201);
-//            ctx.result(body);
-//        } else {
-//            ctx.status(406);
-//        }
+        if(rDAO.insertReimbursement(newTicket) != null){
+            ctx.status(201);
+            ctx.result(body);
+        } else {
+            ctx.status(406);
+        }
+    };
+
+    /*update feature
+    I want this handler to update a ticket that has the status pending
+     */
+    public Handler updateReimbursementHandler = (ctx)-> {
+        String reimburse_status = ctx.pathParam("pending");
+
+        String update = ctx.body();
     };
 }

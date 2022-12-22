@@ -43,11 +43,11 @@ public class ReimburseDAO implements ReimburseDAOInterface {
 
 
     @Override
-    public Reimburse insertReimbursement(Reimburse rb) {
+    public Reimburse insertReimbursement(Reimburse rb){
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "insert into ers_reimbursement " +
-                    "(reimbursement_amount, reimbursement_desc, reimbursement_type_fk, " +
-                    "reimbursement_status_fk, reimbursement_user_fk) values(?,?,?,?,?);";
+//            ArrayList<Reimburse> reimburseList = new ArrayList<Reimburse>();
+            //TRY SOMETHING ABOVE--------------------------------------------------
+            String sql = "insert into ers_reimbursement (reimbursement_amount, reimbursement_desc, reimbursement_type_fk, reimbursement_status_fk, reimbursement_user_fk) values (?,?,?,?,?);";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, rb.getReimbursement_amount());
             ps.setString(2, rb.getReimbursement_desc());
@@ -55,6 +55,8 @@ public class ReimburseDAO implements ReimburseDAOInterface {
             ps.setInt(4, rb.getReimbursement_status_fk());
             ps.setInt(5, rb.getReimbursement_user_fk());
 
+//            //reimburseList added
+//            reimburseList.add(rb);
             //execute
             ps.executeUpdate();
 
@@ -67,6 +69,17 @@ public class ReimburseDAO implements ReimburseDAOInterface {
 
     @Override
     public Reimburse updateReimbursement(Reimburse rb) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            System.out.println("Connection made...");
+            String sql = "update from ers_reimbursement where reimbursement_status_fk = ?;";
+            //instantiate a prepared statement to hold our SQL and fill its variables
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(4, rb.getReimbursement_status_fk()); //I want to update status "accept/deny/pending"
+            ps.executeUpdate();
+            return rb;
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 }

@@ -8,24 +8,30 @@ public class User {
     private String ers_password;
     private int user_role_fk;
 
+    //add role
+    private Role role;
+
     public User() {
     }
 
     //all-args constructor minus id
-    public User(String ers_username, String ers_password, int user_role_fk) {
+    public User(String ers_username, String ers_password, int user_role_fk, Role role) {
         this.ers_username = ers_username;
         this.ers_password = ers_password;
         this.user_role_fk = user_role_fk;
+        this.role = role;
     }
 
     //all-args constructor
 
 
-    public User(int ers_user_id, String ers_username, String ers_password, int user_role_fk) {
+    public User(int ers_user_id, String ers_username, String ers_password, int user_role_fk, Role role) {
         this.ers_user_id = ers_user_id;
         this.ers_username = ers_username;
         this.ers_password = ers_password;
         this.user_role_fk = user_role_fk;
+        //add role
+        this.role = role;
     }
 
     //getter/setter methods
@@ -61,4 +67,9 @@ public class User {
     public void setUser_role_fk(int user_role_fk) {
         this.user_role_fk = user_role_fk;
     }
+
+    //add Role role---------------------------------------------------------------------
+    public Role getRole() { return role; }
+
+    public void setRole(Role role) {this.role = role;}
 }
