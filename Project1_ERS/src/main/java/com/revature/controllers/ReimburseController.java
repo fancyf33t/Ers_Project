@@ -34,15 +34,17 @@ public class ReimburseController {
         If failure, send back 406
          */
 
-        if(rDAO.insertReimbursement(newTicket) != null){
-            ctx.status(201); //201 "accepted"
-            ctx.result(body); //send back ticket
-        } else {
-            ctx.status(403); //406 "not acceptable"
-        }
-//        String JSONTickets = gson.toJson(newTicket);
-//        ctx.result(JSONTickets); // send back all ticket data
-//
-//        ctx.status(202);
+        //works sort of
+        String JSONTickets = gson.toJson(newTicket);
+        ctx.result(JSONTickets); // send back all ticket data
+        ctx.status(202);
+
+        //does not work
+//        if(rDAO.insertReimbursement(newTicket) != null){
+//            ctx.status(201);
+//            ctx.result(body);
+//        } else {
+//            ctx.status(406);
+//        }
     };
 }
