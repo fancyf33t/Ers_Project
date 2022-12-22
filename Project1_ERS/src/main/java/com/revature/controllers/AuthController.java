@@ -23,22 +23,17 @@ public class AuthController {
     //login will be a POST request, since the user is expected to send some data in the HTTP Request
     public Handler loginHandler=(ctx)->{
 
-        System.out.println("hi 1");
         //ctx.body() to grab HTTP Request data
         String body = ctx.body();
 
-        System.out.println("hi 2");
         //GSON for the JSON -> Java conversion
         Gson gson = new Gson();
-        System.out.println("hi 3");
 
         //take the incoming data, instantiate a LoginDTO class
         LoginDTO lDTO = gson.fromJson(body, LoginDTO.class); //.class = "turn this into a LoginDTO object"
 
-        System.out.println("hi 4");
         //if login is successful, this Employee object will be populated. Otherwise, null
         User loggedInUser = aDAO.login(lDTO.getErs_username(), lDTO.getErs_password(), lDTO.getUser_role_fk());
-        System.out.println("hi 5");
 
         if (loggedInUser != null) {
 

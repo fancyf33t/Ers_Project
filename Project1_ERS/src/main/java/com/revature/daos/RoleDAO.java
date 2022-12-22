@@ -14,7 +14,7 @@ public class RoleDAO implements RoleDAOInterface{
     public Role getUserRoleById(int id){
         //use a try-with-resources block to open connection and host our DB communication
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "select * from user_roles where user_role_id = ?;"; //does this match?
+            String sql = "select * from ers_user_roles where user_role_id = ?;"; //does this match?
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -24,12 +24,12 @@ public class RoleDAO implements RoleDAOInterface{
             /*
             While loop to extract the resultSet data
              */
-            while(rs.next()){
-                Role userRole = new Role(
+            if (rs.next()){
+                Role ur = new Role(
                         rs.getInt("user_role_id"),
                         rs.getString("user_role")
                 );
-                return userRole;
+                return ur;
             }
         } catch (SQLException e) {
 //            throw new RuntimeException(e);
