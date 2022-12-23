@@ -23,16 +23,17 @@ CREATE TABLE ers_reimbursement(
 	reimbursement_user_fk int REFERENCES ers_users(ers_user_id)
 );
 
--- table for ers type (travel, lodging, food, etc)
-CREATE TABLE ers_reimbursement_type(
-	reimbursement_type_id serial PRIMARY KEY,
-	reimbursement_type TEXT 
-);
 
 -- table for ers status (accept, deny, pending)
 CREATE TABLE ers_reimbursement_status(
 	reimbursement_status_id serial PRIMARY KEY,
 	reimbursement_status TEXT 
+);
+
+-- table for ers type (travel, lodging, food, etc)
+CREATE TABLE ers_reimbursement_type(
+	reimbursement_type_id serial PRIMARY KEY,
+	reimbursement_type TEXT 
 );
 
 

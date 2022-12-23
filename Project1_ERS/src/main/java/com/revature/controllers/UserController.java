@@ -64,6 +64,7 @@ public class UserController {
             ctx.status(201); //201 "accepted"
             ctx.result(body);
         } else {
+            ctx.result("Try another username");
             ctx.status(406); //406 "not acceptable"
         }
     };

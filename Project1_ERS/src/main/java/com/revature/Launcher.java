@@ -2,7 +2,7 @@ package com.revature;
 
 import com.revature.controllers.AuthController;
 import com.revature.controllers.ReimburseController;
-import com.revature.controllers.RoleController;
+//import com.revature.controllers.RoleController;
 import com.revature.controllers.UserController;
 import com.revature.utils.ConnectionUtil;
 import io.javalin.Javalin;
@@ -35,12 +35,12 @@ public class Launcher {
                     config.enableCorsForAllOrigins(); //Allows us to process HTTP Requests from anywhere
                 }
         ).start(3000); //we need .start() to start our Java server on port3000
-        /*django likes port 3000 I believe
+        /*django likes port 8000 I believe
         It is a parking space for apps...*/
 
         UserController uc = new UserController();
         ReimburseController rbc = new ReimburseController();
-        RoleController rc = new RoleController();
+//        RoleController rc = new RoleController();
         AuthController ac = new AuthController();
 
         //app.get() Javalin method to take GET Requests
